@@ -22,6 +22,7 @@
 .comments:hover,
 .downloads:hover {
   color: rgb(82, 186, 218);
+  transform: scale(1.06);
 }
 
 .gallery__item img {
@@ -35,6 +36,14 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+.stats-item {
+  display: flex;
+  align-items: center;
+}
+
+.material-icons {
+  margin-right: 3px;
 }
 
 .image-icon {
