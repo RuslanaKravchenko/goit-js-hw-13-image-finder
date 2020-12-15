@@ -1,0 +1,44 @@
+.gallery {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.gallery__item {
+  width: 380px;
+  margin-bottom: 30px;
+  cursor: pointer;
+
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery__item:hover {
+  transform: scale(1.03);
+  color: rgb(11, 98, 138);
+}
+.likes:hover,
+.views:hover,
+.comments:hover,
+.downloads:hover {
+  color: rgb(82, 186, 218);
+}
+
+.gallery__item img {
+  margin-bottom: 14px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.image-icon {
+  padding-top: 20vh;
+  font-size: 150px;
+  color: rgb(6, 122, 103);
+}
