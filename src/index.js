@@ -20,19 +20,30 @@ function onSubmit(event) {
 
   clearGallery();
   apiService.resetPage();
-  fetchMoreImages();
+  fetchMoreImages(event);
   form.reset();
 }
 
-function fetchMoreImages() {
+function fetchMoreImages(event) {
   loadMoreBtn.disable();
 
   apiService.fetchImages().then(images => {
-    if (!images) return;
+    if (images.length === 0) {
+      refs.gallery.innerHTML =
+        '<h1 class="error"><span class="smille">😔 </span>No results were found for your search</h1>';
+      loadMoreBtn.hide();
+      return;
+    }
     createMarkup(images);
     loadMoreBtn.show();
     loadMoreBtn.enable();
-    scrollTo();
+
+    if (
+      event.target === loadMoreBtn.refs.button ||
+      event.target === loadMoreBtn.refs.label
+    ) {
+      scrollBy();
+    }
   });
 }
 
@@ -40,9 +51,9 @@ function clearGallery() {
   refs.gallery.innerHTML = '';
 }
 
-function scrollTo() {
-  window.scrollTo({
-    top: document.documentElement.offsetHeight,
+function scrollBy() {
+  window.scrollBy({
+    top: document.documentElement.clientHeight,
     behavior: 'smooth',
   });
 }
